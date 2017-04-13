@@ -1,0 +1,13 @@
+1. update ssh-key:
+    ssh-keygen
+    ssh-add
+
+2. ssh remote connect:
+    add .ssh/id_rsa.pub into target machine .ssh/authorized_keys
+
+3. github
+    test whether ssh to github:
+        ssh git@ssh.github.com
+    sometimes firewall do not allow all ssh functions.
+    solutions: ssh over https
+        ssh -p 443 git@ssh.github.com

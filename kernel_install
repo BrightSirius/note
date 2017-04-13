@@ -1,0 +1,10 @@
+1. wget kernel src
+2. make menuconfig
+3. make
+4. make modules
+5. make modules_install
+6. make install
+
+
+package dependency:
+    perl,  bc, ncurses-devel, openssl-devel

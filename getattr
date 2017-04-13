@@ -1,0 +1,7 @@
+ls --color=auto
+
+coreutils ls -> glibc readdir -> kernel getdents -> vfs_readdir -> file_operaions->readdir -> filesystem_readdir
+
+lstat -> vfs_getattr -> filesystem_getattr
+
+

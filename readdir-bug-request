@@ -1,0 +1,26 @@
+Description of problem:
+    When there are many files in mount point, for example "/mnt/mtp/tmp1" - "/mnt/mtp/tmp_10000", It takes high cost to "ls /mnt/mtp". In my cluster, It takes 3 seconds. The time killer is that when nodeid is equal to 1(getattr the mount point), lookup is called instead of stat. Lookup always miss md-cache in my case, so it takes about 3ms a time. While stat hit the md-cache, so its cost is low.
+    
+    I don't think the  special check of nodeid:1 in fuse_getattr is necessary. I disable the check(always stat instead of lookup in fuse_getattr), and bring a speedup 2~3x. Now it takes about 1.2s.
+    
+    
+    Version-Release number of selected component (if applicable):
+    master branch: commit e2a652ca6ba56235e6d64bf7df110afdc5f6ca27
+    
+    
+    How reproducible:
+    
+    
+    
+    Steps to Reproduce:
+    1.
+    2.
+    3.
+    
+    Actual results:
+    
+    
+    Expected results:
+    
+    
+    Additional info:
